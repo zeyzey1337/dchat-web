@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kullanım Koşulları — Dchat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Syne:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--bg:#080408;--bg2:#0e070c;--rose:#D4547A;--cream:#FDF6F0;--muted:#7a5a68;}
+body{background:var(--bg);color:var(--cream);font-family:'Syne',sans-serif;overflow-x:hidden;}
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.03;pointer-events:none;z-index:9999;
+}
+.orb{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0;}
+.orb-1{width:400px;height:400px;background:radial-gradient(circle,rgba(212,84,122,0.12) 0%,transparent 70%);top:-100px;left:-100px;}
+.orb-2{width:300px;height:300px;background:radial-gradient(circle,rgba(212,84,122,0.07) 0%,transparent 70%);bottom:100px;right:-80px;}
+
+nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 48px;
+  background:rgba(8,4,8,0.85);
+  backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(212,84,122,0.06);
+}
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:28px;letter-spacing:-1px;
+  text-decoration:none;color:var(--cream);
+  display:flex;align-items:center;gap:6px;
+}
+.logo span{color:var(--rose);font-weight:700;}
+.logo em{font-weight:300;font-style:italic;opacity:0.6;}
+.logo-dot{width:6px;height:6px;border-radius:50%;background:var(--rose);margin-bottom:8px;}
+.nav-back{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 20px;border-radius:100px;
+  border:1px solid rgba(212,84,122,0.2);
+  background:rgba(212,84,122,0.05);
+  color:var(--cream);font-size:13px;text-decoration:none;
+  transition:all 0.2s;
+}
+.nav-back:hover{background:rgba(212,84,122,0.12);}
+
+.page{
+  position:relative;z-index:1;
+  max-width:800px;margin:0 auto;
+  padding:80px 48px 120px;
+}
+
+.page-tag{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--rose);margin-bottom:20px;
+  display:flex;align-items:center;gap:12px;
+}
+.page-tag::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(212,84,122,0.3),transparent);}
+
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(44px,6vw,72px);
+  font-weight:600;line-height:1.0;
+  letter-spacing:-2px;margin-bottom:16px;
+}
+h1 em{font-style:italic;font-weight:300;color:var(--muted);}
+
+.page-date{
+  font-size:13px;color:var(--muted);
+  margin-bottom:64px;
+  padding-bottom:32px;
+  border-bottom:1px solid rgba(212,84,122,0.08);
+}
+
+.section{margin-bottom:48px;}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:600;
+  margin-bottom:14px;color:var(--cream);
+  display:flex;align-items:center;gap:12px;
+}
+.section-title::before{
+  content:'';width:4px;height:24px;
+  border-radius:2px;background:var(--rose);
+  flex-shrink:0;
+}
+.section-body{
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;line-height:1.85;
+  color:rgba(253,246,240,0.55);
+  font-style:italic;
+}
+.section-body ul{margin-top:12px;padding-left:0;list-style:none;}
+.section-body li{
+  padding:8px 0 8px 20px;
+  position:relative;
+  border-bottom:1px solid rgba(212,84,122,0.04);
+}
+.section-body li::before{
+  content:'✦';position:absolute;left:0;
+  color:var(--rose);font-size:10px;top:11px;
+}
+
+footer{
+  position:relative;z-index:1;
+  border-top:1px solid rgba(212,84,122,0.06);
+  padding:40px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:-1px;color:rgba(253,246,240,0.3);}
+.footer-logo span{color:var(--rose);font-weight:700;}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{font-size:12px;color:var(--muted);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--rose);}
+
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .page{padding:48px 24px 80px;}
+  footer{padding:32px 24px;flex-direction:column;}
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-dot"></div>
+    <span>D</span><em>chat</em>
+  </a>
+  <a href="index.html" class="nav-back">← Ana Sayfa</a>
+</nav>
+
+<div class="page">
+  <div class="page-tag">Yasal</div>
+  <h1>Kullanım<br><em>Koşulları</em></h1>
+  <div class="page-date">Son güncelleme: Nisan 2026</div>
+
+  <div class="section">
+    <div class="section-title">1. Genel Bilgiler</div>
+    <div class="section-body">Dchat, kullanıcıların anonim ve kısa süreli sohbetler gerçekleştirebildiği bir mobil uygulamadır. Uygulamayı kullanmaya başlamadan önce bu kullanım koşullarını dikkatlice okumanızı rica ederiz. Uygulamaya erişim sağlayarak bu koşulları kabul etmiş sayılırsınız.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">2. Yaş Sınırı</div>
+    <div class="section-body">Dchat yalnızca 18 yaş ve üzeri bireyler tarafından kullanılabilir. 18 yaşından küçük kullanıcıların uygulamaya erişimi kesinlikle yasaktır. Yaşınızı doğru girdiğinizi beyan ederek uygulamayı kullanmayı kabul etmiş olursunuz. Dchat, kullanıcıların beyan ettiği bilgilerin doğruluğundan sorumlu tutulamaz; ancak yaş sınırının ihlal edildiğinin tespit edilmesi halinde hesap derhal kapatılır.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">3. Kabul Edilemez Kullanım</div>
+    <div class="section-body">
+      Aşağıdaki davranışlar kesinlikle yasaktır:
+      <ul>
+        <li>Başka kullanıcılara yönelik taciz, tehdit veya hakaret içeren mesajlar göndermek</li>
+        <li>Müstehcen, şiddet içerikli veya yasadışı içerik paylaşmak</li>
+        <li>Başka bir kişinin kimliğine bürünmek</li>
+        <li>Uygulamayı spam, reklam veya dolandırıcılık amacıyla kullanmak</li>
+        <li>Sistemin güvenliğini tehdit eden her türlü girişimde bulunmak</li>
+      </ul>
+      Bu kurallara aykırı davranan kullanıcıların hesapları bildirim yapılmaksızın kapatılabilir.
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">4. Anonim Sohbet ve Sorumluluk</div>
+    <div class="section-body">Dchat, kullanıcılar arasında anonim bağlantı kurulmasını sağlar. Sohbetler sırasında paylaşılan içeriklerden yalnızca ilgili kullanıcı sorumludur. Dchat, kullanıcılar arasında gerçekleşen yazışmaların içeriğinden hukuki olarak sorumlu tutulamaz.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">5. Hesap Askıya Alma ve Kapatma</div>
+    <div class="section-body">Dchat, bu koşulları ihlal eden kullanıcıların hesaplarını önceden bildirim yapmaksızın geçici veya kalıcı olarak askıya alma ya da kapatma hakkını saklı tutar. Hesabınızın kapatılması durumunda itiraz hakkınız bulunmamaktadır.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">6. Fikri Mülkiyet</div>
+    <div class="section-body">Dchat uygulaması, logosu, tasarımı ve tüm içerikleri Dchat'e aittir ve telif hakkı yasaları kapsamında korunmaktadır. Kullanıcılar bu içerikleri izinsiz kopyalayamaz, dağıtamaz veya değiştiremez.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">7. Değişiklikler</div>
+    <div class="section-body">Dchat, bu kullanım koşullarını önceden haber vermeksizin değiştirme hakkını saklı tutar. Değişiklikler uygulama üzerinden duyurulur. Değişikliklerden sonra uygulamayı kullanmaya devam etmeniz, güncel koşulları kabul ettiğiniz anlamına gelir.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">8. Uygulanacak Hukuk</div>
+    <div class="section-body">Bu kullanım koşulları Türkiye Cumhuriyeti kanunlarına tabidir. Uyuşmazlık halinde Türkiye mahkemeleri yetkilidir.</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">9. İletişim</div>
+    <div class="section-body">Bu koşullara ilişkin sorularınız için uygulama içi destek kanalını kullanabilirsiniz. Dchat, iletişim talebinize en kısa sürede yanıt vermeye çalışacaktır.</div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo"><span>D</span>chat</div>
+  <div class="footer-links">
+    <a href="privacy.html">Gizlilik Politikası</a>
+    <a href="terms.html">Kullanım Koşulları</a>
+  </div>
+</footer>
+</body>
+</html>
